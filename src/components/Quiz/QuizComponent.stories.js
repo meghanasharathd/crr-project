@@ -1,4 +1,4 @@
-import QuizComponent from './index';
+import QuizComponent from './QuizComponent';
 import data from './mock.json';
 
 export default {

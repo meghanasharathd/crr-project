@@ -1,4 +1,4 @@
-import CountdownComponent from './index';
+import CountdownComponent from './quizCountdown';
 
 export default {
   title: 'Components/Countdown',
