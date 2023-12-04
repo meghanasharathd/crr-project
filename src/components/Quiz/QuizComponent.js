@@ -24,10 +24,12 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [timeTaken, setTimeTaken] = useState(null);
 
   useEffect(() => {
+    // Scroll to top when question index changes
     if (questionIndex > 0) window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [questionIndex]);
 
   const handleItemClick = (e, { name }) => {
+    // Handle user's answer click
     setUserSlectedAns(name);
   };
 
@@ -46,6 +48,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     });
 
     if (questionIndex === data.length - 1) {
+      // Check if it's the last question
       return endQuiz({
         totalQuestions: data.length,
         correctAnswers: correctAnswers + point,
@@ -61,6 +64,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   };
 
   const timeOver = timeTaken => {
+    // Handle time-over event
     return endQuiz({
       totalQuestions: data.length,
       correctAnswers,
@@ -69,7 +73,8 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     });
   };
 
-  return (
+  // Main content of the component
+  const renderContent = () => (
     <Item.Header>
       <Container>
         <Segment>
@@ -139,12 +144,17 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
       </Container>
     </Item.Header>
   );
+
+  // Render the content
+  return renderContent();
 };
 
+// PropTypes for type-checking
 Quiz.propTypes = {
   data: PropTypes.array.isRequired,
   countdownTime: PropTypes.number.isRequired,
   endQuiz: PropTypes.func.isRequired,
 };
 
+// Export the component
 export default Quiz;

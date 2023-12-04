@@ -1,4 +1,4 @@
-import ResultComponent from './index';
+import ResultComponent from './QuizResult';
 import data from './mockData.json';
 
 export default {

@@ -1,4 +1,4 @@
-import LoaderComponent from './index';
+import LoaderComponent from './LoadingIndicator';
 
 export default {
   title: 'Components/Loader',

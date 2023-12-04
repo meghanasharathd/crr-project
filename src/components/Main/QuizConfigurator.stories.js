@@ -1,4 +1,4 @@
-import MainComponent from './index';
+import MainComponent from './QuizConfigurator';
 
 export default {
   title: 'Components/Main',

@@ -1,4 +1,4 @@
-import ShareButtonComponent from './index';
+import ShareButtonComponent from './shareButton';
 
 export default {
   title: 'Components/ShareButton',

@@ -1,4 +1,4 @@
-import OfflineComponent from './index';
+import OfflineComponent from './Offline';
 
 export default {
   title: 'Components/Offline',

@@ -1,4 +1,4 @@
-import HeaderComponent from './index';
+import HeaderComponent from './AppHeader';
 
 export default {
   title: 'Components/Header',

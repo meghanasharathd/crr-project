@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Segment, Header, Button } from 'semantic-ui-react';
 
-import ShareButton from '../ShareButton';
+import ShareButton from '../ShareButton/shareButton';
 import { calculateScore, calculateGrade, timeConverter } from '../../utils';
 
 const Stats = ({

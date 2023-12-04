@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
-import Layout from '../Layout';
+import Layout from '../AppLayout';
 import Loader from '../Loader';
 import Main from '../Main';
-import Quiz from '../Quiz';
-import Result from '../Result';
+import Quiz from '../Quiz/QuizComponent';
+import Result from '../Result/QuizResult';
 
 import { shuffle } from '../../utils';
 
 const App = () => {
+
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState(null);
   const [data, setData] = useState(null);
@@ -17,14 +18,16 @@ const App = () => {
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [resultData, setResultData] = useState(null);
 
+  // Function to start the quiz, receives data and countdown time
   const startQuiz = (data, countdownTime) => {
     setLoading(true);
     setLoadingMessage({
-      title: 'Loading...',
-      message: "Almost there!",
+      title: 'Loading your quiz...',
+      message: "It won't be long!",
     });
     setCountdownTime(countdownTime);
 
+    // Simulating loading time with setTimeout
     setTimeout(() => {
       setData(data);
       setIsQuizStarted(true);
@@ -32,13 +35,15 @@ const App = () => {
     }, 1000);
   };
 
+  // Function to end the quiz, receives result data
   const endQuiz = resultData => {
     setLoading(true);
     setLoadingMessage({
-      title: 'Results...',
-      message: 'Wont be long!',
+      title: 'Fetching your results...',
+      message: 'Just a moment!',
     });
 
+    // Simulating loading time with setTimeout
     setTimeout(() => {
       setIsQuizStarted(false);
       setIsQuizCompleted(true);
@@ -47,13 +52,15 @@ const App = () => {
     }, 2000);
   };
 
+  // Function to replay the quiz
   const replayQuiz = () => {
     setLoading(true);
     setLoadingMessage({
-      title: 'Round two!',
-      message: "Almost there...",
+      title: 'Getting ready for round two.',
+      message: "It won't take long!",
     });
 
+    // Shuffling the quiz data and options
     const shuffledData = shuffle(data);
     shuffledData.forEach(element => {
       element.options = shuffle(element.options);
@@ -61,6 +68,7 @@ const App = () => {
 
     setData(shuffledData);
 
+    // Simulating loading time with setTimeout
     setTimeout(() => {
       setIsQuizStarted(true);
       setIsQuizCompleted(false);
@@ -69,13 +77,15 @@ const App = () => {
     }, 1000);
   };
 
+  // Function to reset the quiz and return to the home screen
   const resetQuiz = () => {
     setLoading(true);
     setLoadingMessage({
-      title: 'Taking you back home!',
+      title: 'Loading the home screen.',
       message: 'Thank you for playing!',
     });
 
+    // Simulating loading time with setTimeout
     setTimeout(() => {
       setData(null);
       setCountdownTime(null);
@@ -88,7 +98,7 @@ const App = () => {
 
   return (
     <Layout>
-      {loading && <Loader {...loadingMessage} />}
+      {loading && <Loader {...loadingMessage} />} {/* Show loader if loading */}
       {!loading && !isQuizStarted && !isQuizCompleted && (
         <Main startQuiz={startQuiz} />
       )}
